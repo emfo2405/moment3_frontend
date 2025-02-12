@@ -4,6 +4,32 @@ $background-color: #78898F;
 $section-color: #8D957E;
 $highlight-color: #984216;
 
+@mixin button($highlight-color) { 
+    padding: 1.5%;
+    border-radius: 5px;
+    background-color: $highlight-color;
+    margin: auto;
+    box-shadow: 5px 2px lighten($highlight-color, 40%);
+  
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 100%;
+  }
+}
+
+@mixin button-hover($highlight-color) {
+  background-color: darken($highlight-color, 8%);
+  box-shadow: 5px 2px lighten($highlight-color, 5%);
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(8, 25%);
+}
+
 body {
 font: 100% $font-stack;
 background-color: $background-color;
@@ -11,12 +37,21 @@ background-color: $background-color;
 
 main {
   background-color: $primary-color;
+  margin: auto;
+  width: 90%;
 }
 
 /*Designval för header och meny*/
 header {
   grid-row-start: 1;
   grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+nav {
+  grid-row-start: 2;
+  grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 5;
 }
@@ -67,4 +102,69 @@ nav {background-color: $section-color;}
     color: white;
   }
   }
+
+/*Design av inledande titel och text*/
+#inledning-sektion {
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+#inledning-sektion {
+  margin: auto;
+  width: 50%;
+
+  h1 {
+    text-align: center;
+  }
+
+}
+
+
+  /*Design av bilder och ramar*/
+  #image1 {
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+
+  #image2 {
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 3;
+  }
+
+/*Placering och design av knappar*/
+#button {
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+#button {
+  @include button($highlight-color);
+}
+
+#button:hover, #button:focus {
+  @include button-hover($highlight-color);
+}
+
+
+
+  /*Placering och design av footer*/
+  footer {
+    grid-row-start: 5;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+
+
+
+
+
 
