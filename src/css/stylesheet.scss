@@ -1,15 +1,15 @@
 $font-stack: Helvetica, sans-serif;
-$primary-color: #E4D6C5;
-$background-color: #78898F;
-$section-color: #8D957E;
-$highlight-color: #984216;
+$primary-color: #f8d2bb;
+$background-color: #f8b797;
+$section-color: #9d9d69;
+$highlight-color: #b8a0ba;
 
 @mixin button($highlight-color) { 
     padding: 1.5%;
     border-radius: 5px;
     background-color: $highlight-color;
     margin: auto;
-    box-shadow: 5px 2px lighten($highlight-color, 40%);
+    box-shadow: 5px 5px  lighten($highlight-color, 10%);
   
   a {
     color: white;
@@ -20,7 +20,7 @@ $highlight-color: #984216;
 
 @mixin button-hover($highlight-color) {
   background-color: darken($highlight-color, 8%);
-  box-shadow: 5px 2px lighten($highlight-color, 5%);
+  box-shadow: 5px 5px lighten($highlight-color, 5%);
 }
 
 
@@ -103,6 +103,9 @@ nav {background-color: $section-color;}
   }
   }
 
+  /*Placering av sidtitel*/
+
+
 /*Design av inledande titel och text*/
 #inledning-sektion {
   grid-row-start: 2;
@@ -135,6 +138,19 @@ nav {background-color: $section-color;}
     grid-row-end: 4;
     grid-column-start: 3;
     grid-column-end: 3;
+  }
+
+  #image1 {
+    margin-left: -10%;
+  }
+
+  #image2 {
+    margin-left: 5%;
+  }
+
+  #image1, #image2 {
+    margin-top: 5%;
+
   }
 
 /*Placering och design av knappar*/
