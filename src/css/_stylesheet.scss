@@ -4,16 +4,23 @@ $background-color: #a0a193;
 $highlight-color: #861f0d;
 $text-color: #edeae1;
 
+@mixin text-color($background) {
+  @if $background ==$background-color {
+    color: black;
+  }
 
+  @else {
+    color: $text-color;
+  }
+}
 
+@mixin button() {
+  padding: 1.5%;
+  border-radius: 5px;
+  background-color: $highlight-color;
+  margin: auto;
+  box-shadow: 5px 5px lighten($highlight-color, 10%);
 
-@mixin button($highlight-color) { 
-    padding: 1.5%;
-    border-radius: 5px;
-    background-color: $highlight-color;
-    margin: auto;
-    box-shadow: 5px 5px  lighten($highlight-color, 10%);
-  
   a {
     color: white;
     text-decoration: none;
@@ -21,7 +28,7 @@ $text-color: #edeae1;
   }
 }
 
-@mixin button-hover($highlight-color) {
+@mixin button-hover() {
   background-color: darken($highlight-color, 8%);
   box-shadow: 5px 5px lighten($highlight-color, 5%);
 }
@@ -29,7 +36,7 @@ $text-color: #edeae1;
 
 
 body {
-background-color: $background-color;
+  background-color: $background-color;
 }
 
 main {
@@ -50,29 +57,31 @@ header {
 
 /*Designval för header och meny*/
 #headmenu-small {
-  display:none;
+  display: none;
 }
 
 
-nav {background-color: $highlight-color;}
+nav {
+  background-color: $highlight-color;
+}
 
 #menutitle {
-    float:left; 
-    text-decoration: none; 
-    text-align:center; 
-    padding: 14px 16px;
-    font-size: 120%;
+  float: left;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 120%;
 }
 
-#menu  {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    margin-left: 1%;
-  }
+#menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-left: 1%;
+}
 
-  #headmenu {
+#headmenu {
   li {
     font-size: 110%;
     float: inline-start;
@@ -80,7 +89,7 @@ nav {background-color: $highlight-color;}
 }
 
 
-  #headmenu li {
+#headmenu li {
   a {
     display: block;
     text-align: center;
@@ -88,14 +97,14 @@ nav {background-color: $highlight-color;}
     text-decoration: none;
     color: $text-color;
   }
-  
+
   a:hover {
     background-color: darken($highlight-color, 10%);
     color: white;
   }
-  }
+}
 
-  /*Placering av sidtitel*/
+/*Placering av sidtitel*/
 
 
 /*Design av inledande titel och text*/
@@ -116,42 +125,56 @@ nav {background-color: $highlight-color;}
   margin-top: 5%;
 
 
-  h2{
+  h2 {
     text-align: center;
   }
 }
 
+#arbetsprocess {
+  @extend #inledning-sektion;
+}
 
-  /*Design av bilder*/
+
+/*Design av bilder*/
 
 
-  #image1, #image2 {
-    margin: auto;
-    margin-top: 5%;
+#image1,
+#image2 {
+  margin: auto;
+  margin-top: 5%;
 
-  }
+}
 
 /*Placering och design av knappar*/
 
 
 #button {
-  @include button($highlight-color);
+  @include button();
 }
 
 #button:hover {
-  @include button-hover($highlight-color);
+  @include button-hover();
 }
 
 #about-button {
-  @include button($highlight-color);
+  @include button();
 }
 
 #about-button:hover {
-  @include button-hover($highlight-color);
+  @include button-hover();
+}
+
+#process-button {
+  @include button();
+  margin-bottom: 25%;
+}
+
+#process-button:hover {
+  @include button-hover();
 }
 
 
-  /*Placering och design av footer*/
+/*Placering och design av footer*/
 
 footer {
   width: 100%;
@@ -162,47 +185,51 @@ footer {
 }
 
 @media (prefers-color-scheme: dark) {
-  
-  body{
-      color: #edeae1;
-      background-color: #200000;
+
+
+
+  body {
+    background-color: #200000;
+    @include text-color(#200000);
   }
 
   main {
     background-color: #410000;
 
   }
-  
+
 }
 
 @media (max-width: 1000px) {
+
   /*Design av humbuergermeny*/
-#sidtitel-small {
-  text-align: left;
-}
-#sidtitel {
-  display:none;
-}
+  #sidtitel-small {
+    text-align: left;
+  }
+
+  #sidtitel {
+    display: none;
+  }
 
   #headmenu-small {
-    display:initial;
+    display: initial;
   }
-  
+
   #headmenu {
-    display:none;
+    display: none;
   }
-  
-/*Design av hamburgermeny*/
-  .headmenu-small-div{
+
+  /*Design av hamburgermeny*/
+  .headmenu-small-div {
     overflow: hidden;
     background-color: $highlight-color;
     position: relative;
   }
-  
+
   .headmenu-small-div #menu-small {
     display: none;
   }
-  
+
   .headmenu-small-div a {
     color: $text-color;
     padding: 14px 14px;
@@ -210,20 +237,20 @@ footer {
     font-size: 17px;
     display: block;
   }
-  
-  
+
+
   #menu-small {
     list-style-type: none;
     margin-top: -5%;
 
-a:hover {
-  color: white;
-  background-color: darken($highlight-color, 10%);
-  width: 30%;
-  margin: auto;
-}
+    a:hover {
+      color: white;
+      background-color: darken($highlight-color, 10%);
+      width: 30%;
+      margin: auto;
+    }
 
-}
+  }
 
   .bars {
     display: block;
@@ -232,7 +259,7 @@ a:hover {
     background-color: white;
     margin: 5px 0;
   }
-  
+
   .menu-btn {
     display: flex;
     align-items: center;
@@ -241,7 +268,7 @@ a:hover {
     cursor: pointer;
     box-shadow: none;
   }
-  
+
   .open {
     display: flex;
     margin: 1em 1em;
@@ -251,18 +278,18 @@ a:hover {
     right: 0;
     margin-top: 35px;
   }
-  
+
   .menu-icon {
     margin-right: 15px;
 
   }
-  
+
   .menu-text {
     font-size: 1.3em;
     color: white;
 
   }
-  
+
   .close {
     display: flex;
     margin: 1em 1em;
@@ -272,41 +299,54 @@ a:hover {
     right: 0;
     margin-top: 35px;
   }
-  
-  #open-menu, #close-menu {
+
+  #open-menu,
+  #close-menu {
     box-shadow: none;
     border: none;
   }
-  
+
   .cross1 {
     width: 25px;
     transform: rotate(45deg);
     position: relative;
     top: 5px;
   }
-  
+
   .cross2 {
     width: 25px;
     transform: rotate(135deg);
     position: relative;
     top: -3px;
   }
-  
-  .menu-btn-open, .menu-btn.close, #open-menu {
+
+  .menu-btn-open,
+  .menu-btn.close,
+  #open-menu {
     position: absolute;
     right: 0;
     top: 0;
   }
-  
+
   #open-menu {
     z-index: 2;
   }
 
-#image1, #image2 {
-  width: 60%;
-}
+  .image {
+    width: 70%;
+    margin-left: 15%;
+  }
+
+  #inledning-sektion {
+    width: 80%;
+  }
+
+  #about {
+    @extend #inledning-sektion;
+  }
+
+  #arbetsprocess {
+    @extend #inledning-sektion;
+  }
 
 }
-
-
-
