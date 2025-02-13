@@ -1,8 +1,9 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #e8e8e0;
 $background-color: #a0a193;
-$highlight-color: #b53720;
+$highlight-color: #861f0d;
 $text-color: #edeae1;
+
 
 
 
@@ -160,6 +161,20 @@ footer {
   color: $text-color;
 }
 
+@media (prefers-color-scheme: dark) {
+  
+  body{
+      color: #edeae1;
+      background-color: #200000;
+  }
+
+  main {
+    background-color: #410000;
+
+  }
+  
+}
+
 @media (max-width: 1000px) {
   /*Design av humbuergermeny*/
 #sidtitel-small {
@@ -287,12 +302,11 @@ a:hover {
     z-index: 2;
   }
 
-
-
-
+#image1, #image2 {
+  width: 60%;
 }
 
-
+}
 
 
 
